@@ -1,12 +1,21 @@
 # /**********************************************************************
 # * This is a file containing multimeter functions
-# * Default is configured for: TekPower TP9605BT True RMS AC/DC Multimeter
+# * Default is configured for: Arduino UNO R4
 # **********************************************************************/
 
 
-#for multimeter: TekPower TP9605BT True RMS AC/DC Multimeter
+#for Arduino UNO R4
+import serial
+import time
+
+# Initialize the serial connection
+arduino = serial.Serial(port='COM3', baudrate=9600, timeout=1)
+
 def continuity():
-    if touching() == True:
+    try:
+        arduino.flushInput()  # Clear any stale data
+        data = arduino.readline().decode().strip()
+        return data == "1"
+    except Exception as e:
+        print(f"Error: {e}", " \n STOPPING MOVEMENT")
         return True
-    else:
-        return False
