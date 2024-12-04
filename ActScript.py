@@ -5,7 +5,6 @@
 # * Author: Fuller Collins-Bilyeu
 # **********************************************************************/
 
-from turtle import tilt
 from MCSControlPythonWrapper.MCSControl_PythonWrapper import *
 from Multimeter import continuity
 import pandas as pd
@@ -369,7 +368,7 @@ def align_aperture():
     Waits for the user to confirm alignment before returning to the default position.
     """
     # Define height from wafer in nm
-    height = 5000
+    height = 10000
     # Load positions from CSV
     try:
         df = pd.read_csv("xyz_positions.csv")
